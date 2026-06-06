@@ -6,11 +6,11 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
-// ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────
 // Dark Color Scheme
 // Kaynak: docs/design/00-color-system.md
-// ─────────────────────────────────────────────────────────────────────────────
-private val LyraDarkColors = darkColorScheme(
+// ─────────────────────────────────────────────
+private val LyraDarkColorScheme = darkColorScheme(
     primary              = DarkPrimary,
     onPrimary            = DarkOnPrimary,
     primaryContainer     = DarkPrimaryContainer,
@@ -49,11 +49,11 @@ private val LyraDarkColors = darkColorScheme(
     scrim                = DarkScrim,
 )
 
-// ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────
 // Light Color Scheme
 // Kaynak: docs/design/00-color-system.md
-// ─────────────────────────────────────────────────────────────────────────────
-private val LyraLightColors = lightColorScheme(
+// ─────────────────────────────────────────────
+private val LyraLightColorScheme = lightColorScheme(
     primary              = LightPrimary,
     onPrimary            = LightOnPrimary,
     primaryContainer     = LightPrimaryContainer,
@@ -92,24 +92,24 @@ private val LyraLightColors = lightColorScheme(
     scrim                = LightScrim,
 )
 
-// ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────
 // LyraApp Tema
 //
-// KURAL: Dinamik renk (Dynamic Color) kullanılmaz.
-//   Marka kimliğini korumak için dynamicColor parametresi kaldırıldı.
+// Kural: Dinamik renk (Dynamic Color) kullanılmaz.
+//   Marka kimliğini korumak için dynamicColor kaldırıldı.
 //   Varsayılan tema: Dark — kullanıcı değiştirebilir.
 //   Kural kaynağı: docs/design/00-color-system.md
-// ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────
 @Composable
 fun LyraAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit,
+    content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) LyraDarkColors else LyraLightColors
+    val colorScheme = if (darkTheme) LyraDarkColorScheme else LyraLightColorScheme
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
-        content = content,
+        typography  = LyraTypography,
+        content     = content
     )
 }
